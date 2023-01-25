@@ -23,10 +23,10 @@ void FgcMode::HandleSocd(InputState &inputs) {
 
 void FgcMode::UpdateDigitalOutputs(InputState &inputs, OutputState &outputs) {
     // Directions
-    outputs.dpadLeft = inputs.left || inputs.c_up;
+    outputs.dpadLeft = inputs.left;
     outputs.dpadRight = inputs.right;
     outputs.dpadDown = inputs.down;
-    outputs.dpadUp = inputs.mod_x;
+    outputs.dpadUp = inputs.mod_x || inputs.c_up;
 
     // Menu keys
     outputs.start = inputs.start;
