@@ -23,7 +23,7 @@ void FgcMode::HandleSocd(InputState &inputs) {
 
 void FgcMode::UpdateDigitalOutputs(InputState &inputs, OutputState &outputs) {
     // Directions
-    outputs.dpadLeft = inputs.left;
+    outputs.dpadLeft = inputs.left || inputs.c_up;
     outputs.dpadRight = inputs.right;
     outputs.dpadDown = inputs.down;
     outputs.dpadUp = inputs.mod_x;
@@ -33,21 +33,21 @@ void FgcMode::UpdateDigitalOutputs(InputState &inputs, OutputState &outputs) {
     outputs.select = inputs.c_left;
     outputs.home = inputs.c_down;
 
-    // Right hand bottom row
-    outputs.a = inputs.b;
-    outputs.b = inputs.x;
-    outputs.triggerRDigital = inputs.z;
-    outputs.triggerLDigital = inputs.c_up;
-
     // Right hand top row
     outputs.x = inputs.r;
     outputs.y = inputs.y;
-    outputs.buttonR = inputs.lightshield;
-    outputs.buttonL = inputs.midshield;
+    outputs.buttonL = inputs.lightshield;
+    outputs.buttonR = inputs.midshield;
+
+    // Right hand bottom row
+    outputs.a = inputs.b;
+    outputs.b = inputs.x;
+    outputs.triggerLDigital = inputs.z;
+    outputs.triggerRDigital = inputs.up;
 
     // Joystick click
-    outputs.leftStickClick = inputs.l;
-    outputs.rightStickClick = inputs.up;
+    outputs.leftStickClick = inputs.a;
+    outputs.rightStickClick = inputs.c_right;
 }
 
 void FgcMode::UpdateAnalogOutputs(InputState &inputs, OutputState &outputs) {
