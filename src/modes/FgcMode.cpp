@@ -14,13 +14,6 @@ FgcMode::FgcMode(socd::SocdType horizontal_socd, socd::SocdType vertical_socd) {
     };
 }
 
-void FgcMode::HandleSocd(InputState &inputs) {
-    if (inputs.down && inputs.mod_x) {
-        inputs.down = false;
-    }
-    InputMode::HandleSocd(inputs);
-}
-
 void FgcMode::UpdateDigitalOutputs(InputState &inputs, OutputState &outputs) {
     // Directions
     outputs.dpadLeft = inputs.left;
@@ -29,15 +22,15 @@ void FgcMode::UpdateDigitalOutputs(InputState &inputs, OutputState &outputs) {
     outputs.dpadUp = inputs.mod_x || inputs.c_up;
 
     // Menu keys
-    outputs.start = inputs.start;
+    outputs.leftStickClick = inputs.start;
     outputs.select = inputs.c_left;
     outputs.home = inputs.c_down;
 
     // Right hand top row
     outputs.x = inputs.r;
-    outputs.y = inputs.y;
+    outputs.buttonR = inputs.y;
     outputs.buttonL = inputs.lightshield;
-    outputs.buttonR = inputs.midshield;
+    outputs.y = inputs.midshield;
 
     // Right hand bottom row
     outputs.a = inputs.b;
